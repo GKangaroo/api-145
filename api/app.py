@@ -26,14 +26,6 @@ def create_app() -> Flask:
     return app
 
 def config_blueprints(app: Flask):
-    # from libra.auth import auth
-    # from libra.dag import dag
-    # from libra.filter_condition import filter_cond
-    # from libra.history import history
-    # from libra.info import info
-    # from libra.record import record
-    # from libra.rule import rule
-    # from libra.shares import shares
-
-    # app.register_blueprint(dag)
-    # app.register_blueprint(record)
+    from api.details import detail
+ 
+    app.register_blueprint(detail)
