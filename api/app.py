@@ -3,6 +3,7 @@ from flask import request
 def create_app() -> Flask:
     app = Flask(__name__)
     app.app_context().push()
+    #sv
     # config_blueprints(app)
     # deploy_mode = os.environ.get(DEPLOY_MODE)
     # if deploy_mode == "PROD":
