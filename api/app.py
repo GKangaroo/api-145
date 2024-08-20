@@ -1,9 +1,9 @@
 from flask import Flask
-
+from flask import request
 def create_app() -> Flask:
     app = Flask(__name__)
     app.app_context().push()
-    config_blueprints(app)
+    # config_blueprints(app)
     # deploy_mode = os.environ.get(DEPLOY_MODE)
     # if deploy_mode == "PROD":
     #     app.config.from_object(config.ProductionConfig)
@@ -23,9 +23,13 @@ def create_app() -> Flask:
     def status():
         return "ok"
 
+    @app.route("/api/start", methods=["POST"])
+    def status1():
+        data = request.get_json()
+        print(data)
     return app
 
-def config_blueprints(app: Flask):
-    from api.details import detail
+# def config_blueprints(app: Flask):
+#     from api.detail.url import detail
  
-    app.register_blueprint(detail)
+#     app.register_blueprint(detail)

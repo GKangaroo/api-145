@@ -4,9 +4,9 @@
 from flask import Blueprint
 
 from api.util import url
-from api.details import Search
+from api.detail.ak47 import Search
 
 detail = Blueprint("detail", __name__, url_prefix="/api/detail")
 
-url(detail, "/search", Search, methods=["POST"])
+url(detail, "/search", Search.as_view('search'), view_name=('search'),methods=["POST"])
 

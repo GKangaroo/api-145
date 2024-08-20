@@ -6,7 +6,11 @@ class Search(MethodView):
     parser.add_argument("key", type=str)
     parser.add_argument("value", type=str)
 
-    def post(self, uid: str = None) -> dict:
+    def __init__(self):
+        #
+        print("???")
+
+    def post(self, uid: str = None):
         request.get_json(force=True)
         args = self.parser.parse_args()
         print("what can i say? \n")
