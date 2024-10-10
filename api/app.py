@@ -1,8 +1,8 @@
 from flask import Flask, jsonify
 from flask import request
 import os, sys
-from api.util.dnssec_badvalid import secrun
-sys.path.append('E:/dpt-tool/dpt-tool')
+from api.util.dnssec_badvalid import secrun, mapcrun
+sys.path.append('E:/dpt-tool2/dpt-tool/dpt-tool')
 from main import run
 import io
 f = io.StringIO()
@@ -64,6 +64,20 @@ def create_app() -> Flask:
         filepath='E:\\145\\web\\src\\views\\DetailDetect\\Leafletheat服务范围地图页面及数据\\test\\'
 
         os.startfile(filepath+ip+'.html')
+        return 'ok'
+    
+    @app.route("/api/ma", methods=["POST"])
+    def status4():
+        data = request.get_json()
+        ip = data["ip"]
+        # filepath='E:\\145\\web\\src\\views\\DetailDetect\\Leafletheat服务范围地图页面及数据\\test\\'
+        str = mapcrun(ip)
+        str = str.replace("[None, None],", "")
+        print("str")
+        with open("E:\\145\\web\\src\\views\\DetailDetect\\Leafletheat服务范围地图页面及数据\\test\\var.js", 'w', encoding='utf-8') as f:
+            f.write(str)
+
+        os.startfile("E:\\145\\web\\src\\views\\DetailDetect\\Leafletheat服务范围地图页面及数据\\test\\var"+'.html')
         return 'ok'
         # run(choice,value)
         # M.ru
